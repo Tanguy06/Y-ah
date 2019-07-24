@@ -13,7 +13,7 @@ class ShopController extends AbstractController
      */
     public function index()
     {
-        return $this->render('pages/shop.html.twig', [
+        return $this->render('shop/index.html.twig', [
             'controller_name' => 'ShopController',
         ]);
     }
