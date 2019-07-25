@@ -34,8 +34,13 @@ class ShopController extends AbstractController
     /**
      *@Route("/shop/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
      */
-    public function show($slug, $id): response {
-        $property = $this->repository->find($id);
+    public function show(Property $property, string $slug): response {
+        if($property->getSlug() !== $slug){
+            return $this->redirectToRoute('property.show',[
+                'id' => $property->getId(),
+                'slug' => $property->getSlug()
+            ], 301);
+        }
         return $this->render('shop/show.html.twig', [
             'property' => $property,
             'current_menu' => 'Shop'
