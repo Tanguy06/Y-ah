@@ -10,6 +10,13 @@ use Cocur\Slugify\Slugify;
  */
 class Property
 {
+
+    const CATEGORIE = [
+        0 => 'Coque de télephone',
+        1 => 'Montre Connectée',
+        2 => 'Batterie externe'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -28,7 +35,7 @@ class Property
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
@@ -43,7 +50,7 @@ class Property
     private $rate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $categorie;
 
@@ -157,6 +164,8 @@ class Property
     public function setPhoto (?string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
     }
 
 
