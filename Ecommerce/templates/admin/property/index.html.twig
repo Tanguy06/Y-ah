@@ -2,22 +2,32 @@
 
 {% block title 'Administration' %}
 
+
+
+
+
 {% block body %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/table_fixed.css') }}">
+
     <div class="container mt-4 mb-4">
         <h1>Administration </h1>
         <a href="{{ path("admin.property.new") }}" class="btn btn-outline-success mb-3 mt-3"><i class="fas fa-plus"></i></a>
-        <table class="table table-striped">
+        <table class="table table-fixed table-hover table-striped">
             <thead>
-            <th>Titre</th>
-            <th>Categorie</th>
-            <th>Actions</th>
+            <th class="col-4">Titre</th>
+            <th class="col-4" >Categorie</th>
+            <th class="col-4">Actions</th>
             </thead>
             <tbody>
             {% for property in properties %}
             <tr>
-                <td>{{ property.name }}</td>
-                <td>{{ property.categorie }}</td>
-                <td><a href="{{ path('admin.property.edit', {id: property.id}) }}" class="btn btn-outline-secondary"><i class="fas fa-cogs"></i></a></td>
+                <td class="col-4">{{ property.name }}</td>
+                <td class="col-4">{{ property.categorie }}</td>
+                <td class="col-4">
+                    <a href="{{ path('admin.property.edit', {id: property.id}) }}" class="btn btn-outline-secondary mr-2"><i class="fas fa-cogs"></i></a>
+                    <a href="#" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></a>
+                </td>
             </tr>
             {% endfor %}
             </tbody>

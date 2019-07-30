@@ -50,7 +50,7 @@ class AdminPropertyController extends AbstractController
     }
 
     /**
-     * @Route ("/admin/property/{id}/edit", name="admin.property.edit")
+     * @Route ("/admin/property/{id}", name="admin.property.edit", methods="GET|POST")
      */
     public function edit(Property $property, Request $request)
     {
@@ -67,5 +67,12 @@ class AdminPropertyController extends AbstractController
             'property' => $property,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route ("/admin/property/{id}", name="admin.property.delete", methods="DELETE")
+     */
+    public function delete(Property $property){
+
     }
 }
